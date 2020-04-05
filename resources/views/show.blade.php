@@ -3,8 +3,8 @@
 @section('content')
     <div class="movies-info border-b border-gray-800">
         <div class="container mx-auto px-4 pb-16 flex flex-col md:flex-row">
-            <div class="flex-none pt-16"> 
-                <img src="https://image.tmdb.org/t/p/w500/{{ $movie['poster_path'] }}" alt="poster" class="md:w-48 lg:w-96">
+            <div class="flex-none pt-16">
+                <img src="https://image.tmdb.org/t/p/w400/{{ $movie['poster_path'] }}" alt="poster" class="md:w-48 lg:w-96">
             </div>
             <div class="pt-16 md:ml-12 lg:ml-24">
                 <h2 class="text-4xl md:mt-0 font-semibold">{{ $movie['title'] }}</h2>
@@ -31,7 +31,7 @@
                         <div class="mr-8">
                             <div>{{ $crew['name'] }}</div>
                             <div class="text-sm text-gray-400">{{ $crew['job'] }}</div>
-                        </div>    
+                        </div>
                         @endif
                         @endforeach
                     </div>
@@ -79,7 +79,7 @@
                 @if ($loop->index < 6)
                 <div class="mt-8">
                     <!-- <a href="#"> -->
-                        <img src="https://image.tmdb.org/t/p/w500/{{ $image['file_path'] }}" alt="image1" class="hover:opacity-75 transition ease-in-out duration-150 cursor-pointer">
+                        <img src="https://image.tmdb.org/t/p/w400/{{ $image['file_path'] }}" alt="image1" class="hover:opacity-75 transition ease-in-out duration-150 cursor-pointer">
                     <!-- </a> -->
                 </div>
                 @endif
