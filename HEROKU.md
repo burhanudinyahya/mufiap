@@ -16,10 +16,9 @@ Sumber: [https://www.codepolitan.com](https://www.codepolitan.com/membuat-proyek
         - Tab "Deploy", ke Deployment Method lalu klik GitHub (connect to GitHub)
         - Seletah connect, search repo-name mana project laravelnya, klik connect
         - Choose a branch to deploy, pilih master / branch lain
-        - Check saja Wait for CI to pass before deploy, karena di GitHub sudah otomatis ada TravisCI sebagai Continuous Integration service 
+        - un-Check saja Wait for CI to pass before deploy, karena di GitHub tidak otomatis ada Continuous Integration service 
         - Klik Enable Automatic Deploys
         - Bisa coba commit dan push di repo GitHub
-        - Ternyata config auto deploy ini belum berhasil run
     - Config ENV in Heroku:
         - Kita tidak perlu membuat file .env manual, heroku telah menyediakan settingannya
         - Tab "Setting" > Config Vars > klik Reveal Config Vars
