@@ -19,6 +19,7 @@ Sumber: [https://www.codepolitan.com](https://www.codepolitan.com/membuat-proyek
         - Check saja Wait for CI to pass before deploy, karena di GitHub sudah otomatis ada TravisCI sebagai Continuous Integration service 
         - Klik Enable Automatic Deploys
         - Bisa coba commit dan push di repo GitHub
+        - Ternyata config auto deploy ini belum berhasil run
     - Config ENV in Heroku:
         - Kita tidak perlu membuat file .env manual, heroku telah menyediakan settingannya
         - Tab "Setting" > Config Vars > klik Reveal Config Vars
@@ -29,6 +30,3 @@ Sumber: [https://www.codepolitan.com](https://www.codepolitan.com/membuat-proyek
         - Buat file Procfile berisi `web: vendor/bin/heroku-php-apache2 public/`, kerena heroku mejalankan file `index.php` di root, makanya perlu di arahkan ke `public/`.
     - Logging
         - Lihat caranya [DISINI](https://devcenter.heroku.com/articles/getting-started-with-laravel#best-practices)
-     
-
-### Test trigger deploy
