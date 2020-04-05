@@ -31,6 +31,8 @@ class MoviesController extends Controller
             ->json()['results'];
 
         return view('index', [
+            'title' => config ('app.name'),
+            'metaDescription' => 'Mufiap adalah aplikasi penyedia list movie terlengkap dan terupdate di dunia.',
             'popularMovies' => $popularMovies,
             'genres' => $genres,
             'nowPlayingMovies' => $nowPlayingMovies
@@ -71,6 +73,8 @@ class MoviesController extends Controller
             ->json();
 
         return view('show', [
+            'title' => $movie['title'] . ' — ' . config('app.name'),
+            'metaDescription' => $movie['title'] . ' - ' . $movie['overview'],
             'movie' => $movie
         ]);
     }
