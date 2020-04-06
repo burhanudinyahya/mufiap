@@ -4,7 +4,7 @@
     <div class="container mx-auto px-4 pt-16">
         <div class="popular-movies">
             <a href="{{ route('movies.popular') }}">
-                <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900">Popular</h2>
+                <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900 inline">Popular</h2>
             </a>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 @foreach ($popularMovies as $movie)
@@ -17,7 +17,7 @@
 
         <div class="now-playing-movies pt-24">
             <a href="{{ route('movies.now_playing') }}">
-                <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900">Now Playing</h2>
+                <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900 inline">Now Playing</h2>
             </a>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 @foreach ($nowPlayingMovies as $movie)
@@ -30,7 +30,7 @@
 
         <div class="upcoming-movies pt-24">
             <a href="{{ route('movies.upcoming') }}">
-                <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900">Upcoming</h2>
+                <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900 inline">Upcoming</h2>
             </a>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 @foreach ($upcomingMovies as $movie)
@@ -43,7 +43,7 @@
 
         <div class="top-rated-movies py-24">
             <a href="{{ route('movies.top_rated') }}">
-                <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900">Top Rated</h2>
+                <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900 inline">Top Rated</h2>
             </a>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 @foreach ($topRatedMovies as $movie)
