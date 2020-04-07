@@ -51,9 +51,9 @@
     <div class="movie-cast border-b border-black-800">
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold">Cast</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
                 @foreach ($movie['credits']['cast'] as $cast)
-                @if ($loop->index < 5)
+                @if ($loop->index < 6)
                 <div class="mt-8">
                     <a href="#">
                         <img src="https://image.tmdb.org/t/p/w300/{{$cast['profile_path']}}" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150">
