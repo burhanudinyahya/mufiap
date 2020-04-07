@@ -7,8 +7,8 @@
     <title>{{ $title }}</title>
     <link rel="stylesheet" href="/css/main.css">
 </head>
-<body class="font-sans bg-gray-900 text-white">
-    <nav class="border-b border-gray-800">
+<body class="font-sans text-black bg-white">
+    <nav class="bg-gray-900 border-b border-gray-800 text-white">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between px-4 py-6">
             <ul class="flex flex-col md:flex-row items-center">
                 <li>
@@ -45,5 +45,11 @@
         </div>
     </nav>
     @yield('content')
+    <footer class="bg-gray-900 border-t border-gray-800 text-white">
+        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between">
+            <p class="text-center">Learn from <a href="https://www.youtube.com/channel/UCtb40EQj2inp8zuaQlLx3iQ" target="_blank">Andre Madarang</a></p>
+            <p class="text-center">Powered by <a href="https://laravel.com" target="_blank">Laravel</a></p>
+        </div>
+    </footer>
 </body>
 </html>
