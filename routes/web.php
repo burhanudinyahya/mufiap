@@ -22,5 +22,7 @@ Route::prefix('/movies')->group(function () {
     Route::get('/upcoming', 'MoviesController@upcoming')->name('movies.upcoming');
     Route::get('/top-rated', 'MoviesController@topRated')->name('movies.top_rated');
     Route::get('/{movie}', 'MoviesController@show')->name('movies.show');
-
 });
+
+Route::get('/actors/', 'ActorsController@index')->name('actors.index');
+Route::get('/actors/{actor}', 'ActorsController@show')->name('actors.show');
