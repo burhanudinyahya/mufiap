@@ -38,7 +38,7 @@ class MoviesController extends Controller
             ->get("https://api.themoviedb.org/3/movie/${id}?append_to_response=credits,videos,images")
             ->json();
 
-        return view('show', [
+        return view('movies.show', [
             'title' => $movie['title'] . ' — ' . config('app.name'),
             'metaDescription' => $movie['title'] . ' - ' . $movie['overview'],
             'movie' => $movie
@@ -48,7 +48,7 @@ class MoviesController extends Controller
     public function showList($section)
     {
         $ucWord =  ucwords( str_replace ('_', ' ', $section) );
-        return view('movie', [
+        return view('movies.index', [
             'title' => $ucWord . ' Movies - ' . config ('app.name'),
             'metaDescription' => 'Mufiap adalah aplikasi penyedia list movie terlengkap dan terupdate di dunia.',
             'section' => $ucWord . ' Movies',

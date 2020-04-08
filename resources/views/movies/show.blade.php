@@ -4,7 +4,7 @@
     <div class="movies-info border-b border-black-800">
         <div class="container mx-auto px-4 pb-16 flex flex-col md:flex-row">
             <div class="flex-none pt-16">
-                <img src="https://image.tmdb.org/t/p/w400/{{ $movie['poster_path'] }}" alt="poster" class="md:w-48 lg:w-96">
+                <img src="https://image.tmdb.org/t/p/w400/{{ $movie['poster_path'] }}" alt="poster" class="md:w-48 lg:w-96" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x600?text=IMAGE+NOT+AVAILABLE';">
             </div>
             <div class="pt-16 md:ml-12 lg:ml-24">
                 <h2 class="text-4xl md:mt-0 font-semibold">{{ $movie['title'] }}</h2>
@@ -24,7 +24,7 @@
                     {{ $movie['overview'] }}
                 </p>
                 <div class="mt-12">
-                    <h4 class="text-white font-semibold">Featured Crew</h4>
+                    <h4 class="text-black font-semibold">Featured Crew</h4>
                     <div class="flex mt-4">
                         @foreach ($movie['credits']['crew'] as $crew)
                         @if ($loop->index < 2)
@@ -53,10 +53,9 @@
             <h2 class="text-4xl font-semibold">Cast</h2>
             <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
                 @foreach ($movie['credits']['cast'] as $cast)
-                @if ($loop->index < 6)
                 <div class="mt-8">
                     <a href="{{ route('actors.show', $cast['id']) }}">
-                        <img src="https://image.tmdb.org/t/p/w300/{{$cast['profile_path']}}" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150"  onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=IMAGE+NOT+AVAILABLE';">
+                        <img src="https://image.tmdb.org/t/p/w300/{{$cast['profile_path']}}" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=IMAGE+NOT+AVAILABLE';">
                     </a>
                     <div class="mt-2">
                         <a href="#" class="text-lg mt-2 hover:text-black:300">{{ $cast['name'] }}</a>
@@ -65,26 +64,24 @@
                         </div>
                     </div>
                 </div>
-                @endif
                 @endforeach
             </div>
         </div>
     </div> <!-- end movie-cast -->
-
+    @if (count($movie['images']['backdrops']) > 0)
     <div class="movie-images">
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold">Images</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 @foreach ($movie['images']['backdrops'] as $image)
-                @if ($loop->index < 6)
                 <div class="mt-8">
                     <!-- <a href="#"> -->
                         <img src="https://image.tmdb.org/t/p/w400/{{ $image['file_path'] }}" alt="image1" class="hover:opacity-75 transition ease-in-out duration-150 cursor-pointer">
                     <!-- </a> -->
                 </div>
-                @endif
                 @endforeach
             </div>
         </div>
     </div> <!-- end movie-images -->
+    @endif
 @endsection
