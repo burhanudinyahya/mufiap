@@ -56,7 +56,7 @@
                 @if ($loop->index < 6)
                 <div class="mt-8">
                     <a href="#">
-                        <img src="https://image.tmdb.org/t/p/w300/{{$cast['profile_path']}}" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="https://image.tmdb.org/t/p/w300/{{$cast['profile_path']}}" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150"  onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=IMAGE+NOT+AVAILABLE';">
                     </a>
                     <div class="mt-2">
                         <a href="#" class="text-lg mt-2 hover:text-black:300">{{ $cast['name'] }}</a>
