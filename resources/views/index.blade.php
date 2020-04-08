@@ -6,9 +6,9 @@
             <a href="{{ route('movies.popular') }}">
                 <h2 class="px-4 uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900 inline">Popular</h2>
             </a>
-            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
                 @foreach ($popularMovies as $movie)
-                    @if ($loop->index < 5)
+                    @if ($loop->index < 6)
                         <x-movie-card :movie='$movie' :genres='$genres' />
                     @endif
                 @endforeach
@@ -19,9 +19,9 @@
             <a href="{{ route('movies.now_playing') }}">
                 <h2 class="px-4 uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900 inline">Now Playing</h2>
             </a>
-            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
                 @foreach ($nowPlayingMovies as $movie)
-                    @if ($loop->index < 5)
+                    @if ($loop->index < 6)
                         <x-movie-card :movie='$movie' :genres='$genres' />
                     @endif
                 @endforeach
@@ -32,9 +32,9 @@
             <a href="{{ route('movies.upcoming') }}">
                 <h2 class="px-4 uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900 inline">Upcoming</h2>
             </a>
-            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
                 @foreach ($upcomingMovies as $movie)
-                    @if ($loop->index < 5)
+                    @if ($loop->index < 6)
                         <x-movie-card :movie='$movie' :genres='$genres' />
                     @endif
                 @endforeach
@@ -45,9 +45,9 @@
             <a href="{{ route('movies.top_rated') }}">
                 <h2 class="px-4 uppercase tracking-wider text-orange-500 text-lg font-semibold hover:text-orange-900 inline">Top Rated</h2>
             </a>
-            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
                 @foreach ($topRatedMovies as $movie)
-                    @if ($loop->index < 5)
+                    @if ($loop->index < 6)
                         <x-movie-card :movie='$movie' :genres='$genres' />
                     @endif
                 @endforeach
