@@ -50,37 +50,41 @@ class ActorsController extends Controller
 
     public function show($id)
     {
-        $actor = Http::withToken(config('services.tmdb.token'))
-            ->get("https://api.themoviedb.org/3/person/${id}")
-            ->json();
+        try{
+            $actor = Http::withToken(config('services.tmdb.token'))
+                ->get("https://api.themoviedb.org/3/person/${id}")
+                ->json();
 
-        $actorMovieCreditCast = Http::withToken(config('services.tmdb.token'))
-            ->get("https://api.themoviedb.org/3/person/${id}/movie_credits")
-            ->json()['cast'];
+            $actorMovieCreditCast = Http::withToken(config('services.tmdb.token'))
+                ->get("https://api.themoviedb.org/3/person/${id}/movie_credits")
+                ->json()['cast'];
 
-        $actorMovieCreditCast = collect($actorMovieCreditCast)->mapWithKeys(function ($movie) {
-            return [
-                $movie['id'] => [
-                    'id'=>$movie['id'],
-                    'title'=>$movie['title'],
-                    'poster_path'=>$movie['poster_path'],
-                    'release_date'=>@$movie['release_date'],
-                    'character'=>$movie['character']
-                ]
-            ];
-        })->sortByDesc('release_date')->all();
+            $actorMovieCreditCast = collect($actorMovieCreditCast)->mapWithKeys(function ($movie) {
+                return [
+                    $movie['id'] => [
+                        'id'=>$movie['id'],
+                        'title'=>$movie['title'],
+                        'poster_path'=>$movie['poster_path'],
+                        'release_date'=>@$movie['release_date'],
+                        'character'=>$movie['character']
+                    ]
+                ];
+            })->sortByDesc('release_date')->all();
 
-        $actorImagesProfiles = Http::withToken(config('services.tmdb.token'))
-            ->get("https://api.themoviedb.org/3/person/${id}/images")
-            ->json()['profiles'];
+            $actorImagesProfiles = Http::withToken(config('services.tmdb.token'))
+                ->get("https://api.themoviedb.org/3/person/${id}/images")
+                ->json()['profiles'];
 
-        return view('actors.show', [
-            'title' => $actor['name'] . ' — ' . config('app.name'),
-            'metaDescription' => $actor['name'] . ' - ' . $actor['biography'],
-            'actor' => $actor,
-            'actorMovieCreditCast' => $actorMovieCreditCast,
-            'actorImagesProfiles' => $actorImagesProfiles
-        ]);
+            return view('actors.show', [
+                'title' => $actor['name'] . ' — ' . config('app.name'),
+                'metaDescription' => $actor['name'] . ' - ' . $actor['biography'],
+                'actor' => $actor,
+                'actorMovieCreditCast' => $actorMovieCreditCast,
+                'actorImagesProfiles' => $actorImagesProfiles
+            ]);
+        }catch (\Exception $e){
+            return $e;
+        }
     }
 
 }
