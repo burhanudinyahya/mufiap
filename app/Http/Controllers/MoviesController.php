@@ -59,21 +59,28 @@ class MoviesController extends Controller
 
     public static function list($section)
     {
-        return Http::withToken(config('services.tmdb.token'))
-                   ->get('https://api.themoviedb.org/3/movie/' . $section)
-                   ->json()['results'];
+        try {
+            return Http::withToken(config('services.tmdb.token'))
+                         ->get('https://api.themoviedb.org/3/movie/' . $section)
+                         ->json()['results'];
+        }catch (\Exception $e){
+            return $e;
+        }
     }
 
     public static function genres()
     {
-        $genresArray = Http::withToken(config('services.tmdb.token'))
-                           ->get('https://api.themoviedb.org/3/genre/movie/list')
-                           ->json()['genres'];
+        try {
+            $genresArray = Http::withToken(config('services.tmdb.token'))
+                               ->get('https://api.themoviedb.org/3/genre/movie/list')
+                               ->json()['genres'];
 
-        return collect($genresArray)->mapWithKeys(function ($genre) {
-            return [$genre['id'] => $genre['name']];
-        });
-
+            return collect($genresArray)->mapWithKeys(function ($genre) {
+                return [$genre['id'] => $genre['name']];
+            });
+        }catch (\Exception $e){
+            return $e;
+        }
     }
 
 }
