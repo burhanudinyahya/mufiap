@@ -20,13 +20,10 @@ class ActorsController extends Controller
             if (@$popularPersons['results']) {
 
     //            $gender = $request->input('gender');
-    //            $gender = 0;
     //
     //            $filteredPopularPersons = collect($popularPersons['results'])->filter(function($value, $key) use ($gender) {
     //                return $value['gender'] === $gender;
     //            })->all();
-
-    //            dd($filteredPopularPersons);
 
                 return view('actors.index', [
                     'title' => 'Popular Actor - ' . config ('app.name'),
