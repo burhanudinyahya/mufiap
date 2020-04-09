@@ -48,11 +48,11 @@
         </div>
     </nav>
     @yield('content')
-    <footer class="bg-gray-900 border-t border-gray-800 text-white">
-        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between">
-            <p class="text-center">Learn from <a href="https://www.youtube.com/channel/UCtb40EQj2inp8zuaQlLx3iQ" target="_blank">Andre Madarang</a></p>
-            <p class="text-center">Powered by <a href="https://laravel.com" target="_blank">Laravel</a></p>
-        </div>
-    </footer>
+{{--    <footer class="bg-gray-900 border-t border-gray-800 text-white">--}}
+{{--        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between">--}}
+{{--            <p class="text-center">Learn from <a href="https://www.youtube.com/channel/UCtb40EQj2inp8zuaQlLx3iQ" target="_blank">Andre Madarang</a></p>--}}
+{{--            <p class="text-center">Powered by <a href="https://laravel.com" target="_blank">Laravel</a></p>--}}
+{{--        </div>--}}
+{{--    </footer>--}}
 </body>
 </html>
