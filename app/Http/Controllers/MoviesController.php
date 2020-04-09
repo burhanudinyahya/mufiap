@@ -34,15 +34,19 @@ class MoviesController extends Controller
 
     public function show($id)
     {
-        $movie = Http::withToken(config('services.tmdb.token'))
-            ->get("https://api.themoviedb.org/3/movie/${id}?append_to_response=credits,videos,images")
-            ->json();
+        try{
+            $movie = Http::withToken(config('services.tmdb.token'))
+                ->get("https://api.themoviedb.org/3/movie/${id}?append_to_response=credits,videos,images")
+                ->json();
 
-        return view('movies.show', [
-            'title' => $movie['title'] . ' — ' . config('app.name'),
-            'metaDescription' => $movie['title'] . ' - ' . $movie['overview'],
-            'movie' => $movie
-        ]);
+            return view('movies.show', [
+                'title' => $movie['title'] . ' — ' . config('app.name'),
+                'metaDescription' => $movie['title'] . ' - ' . $movie['overview'],
+                'movie' => $movie
+            ]);
+        }catch (\Exception $e){
+            return $e;
+        }
     }
 
     public function showList($section)
