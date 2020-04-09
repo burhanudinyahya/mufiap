@@ -11,38 +11,40 @@ class ActorsController extends Controller
     public function index(Request $request)
     {
         $page = $request->input('page');
+        try{
+            $popularPersons = Http::withToken(config('services.tmdb.token'))
+                ->get("https://api.themoviedb.org/3/person/popular?page=${page}")
+                ->json();
 
-        $popularPersons = Http::withToken(config('services.tmdb.token'))
-            ->get("https://api.themoviedb.org/3/person/popular?page=${page}")
-            ->json();
 
+            if (@$popularPersons['results']) {
 
-        if (@$popularPersons['results']) {
+    //            $gender = $request->input('gender');
+    //            $gender = 0;
+    //
+    //            $filteredPopularPersons = collect($popularPersons['results'])->filter(function($value, $key) use ($gender) {
+    //                return $value['gender'] === $gender;
+    //            })->all();
 
-//            $gender = $request->input('gender');
-//            $gender = 0;
-//
-//            $filteredPopularPersons = collect($popularPersons['results'])->filter(function($value, $key) use ($gender) {
-//                return $value['gender'] === $gender;
-//            })->all();
+    //            dd($filteredPopularPersons);
 
-//            dd($filteredPopularPersons);
-
-            return view('actors.index', [
-                'title' => 'Popular Actor - ' . config ('app.name'),
-                'metaDescription' => 'Mufiap adalah aplikasi penyedia list movie terlengkap dan terupdate di dunia.',
-//                'popularPersons' => $filteredPopularPersons,
-                'popularPersons' => $popularPersons['results'],
-                'page' => (intval($page) > 0) ? intval($page) : 1
-            ]);
-        } else{
-            return view('error', [
-                'title' => 'Page Not Found - ' . config ('app.name'),
-                'metaDescription' => 'Mufiap adalah aplikasi penyedia list movie terlengkap dan terupdate di dunia.',
-                'errors' => $popularPersons['errors']
-            ]);
+                return view('actors.index', [
+                    'title' => 'Popular Actor - ' . config ('app.name'),
+                    'metaDescription' => 'Mufiap adalah aplikasi penyedia list movie terlengkap dan terupdate di dunia.',
+    //                'popularPersons' => $filteredPopularPersons,
+                    'popularPersons' => $popularPersons['results'],
+                    'page' => (intval($page) > 0) ? intval($page) : 1
+                ]);
+            } else{
+                return view('error', [
+                    'title' => 'Page Not Found - ' . config ('app.name'),
+                    'metaDescription' => 'Mufiap adalah aplikasi penyedia list movie terlengkap dan terupdate di dunia.',
+                    'errors' => $popularPersons['errors']
+                ]);
+            }
+        }catch (\Exception $e){
+            return $e;
         }
-
 
     }
 
