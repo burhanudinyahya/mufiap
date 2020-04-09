@@ -2,22 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class ActorsController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $popularPersons = Http::withToken(config('services.tmdb.token'))
-            ->get("https://api.themoviedb.org/3/person/popular")
-            ->json()['results'];
+        $page = $request->input('page');
 
-        return view('actors.index', [
-            'title' => 'Popular Actor - ' . config ('app.name'),
-            'metaDescription' => 'Mufiap adalah aplikasi penyedia list movie terlengkap dan terupdate di dunia.',
-            'popularPersons' => $popularPersons
-        ]);
+        $popularPersons = Http::withToken(config('services.tmdb.token'))
+            ->get("https://api.themoviedb.org/3/person/popular?page=${page}")
+            ->json();
+
+        if (@$popularPersons['results']) {
+            return view('actors.index', [
+                'title' => 'Popular Actor - ' . config ('app.name'),
+                'metaDescription' => 'Mufiap adalah aplikasi penyedia list movie terlengkap dan terupdate di dunia.',
+                'popularPersons' => $popularPersons['results'],
+                'page' => (intval($page) > 0) ? intval($page) : 1
+            ]);
+        } else{
+            return view('error', [
+                'title' => 'Page Not Found - ' . config ('app.name'),
+                'metaDescription' => 'Mufiap adalah aplikasi penyedia list movie terlengkap dan terupdate di dunia.',
+                'errors' => $popularPersons['errors']
+            ]);
+        }
+
+
     }
 
     public function show($id)
