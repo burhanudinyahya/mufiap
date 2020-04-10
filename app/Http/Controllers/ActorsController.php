@@ -40,7 +40,8 @@ class ActorsController extends Controller
                 ]);
             }
         }catch (\Exception $e){
-            return $e;
+//            return $e;
+            return abort(404);
         }
 
     }
@@ -80,7 +81,8 @@ class ActorsController extends Controller
                 'actorImagesProfiles' => $actorImagesProfiles
             ]);
         }catch (\Exception $e){
-            return $e;
+//            return $e;
+            return abort(404);
         }
     }
 
