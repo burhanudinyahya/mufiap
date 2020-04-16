@@ -12,7 +12,7 @@
                 <div class="mt-12">
                     <h2 class="text-black font-semibold">Biography</h2>
                     <div class="flex mt-4">
-                        {{ $actor['biography'] }}
+                        {!! str_replace('.', '.<br>', $actor['biography']) !!}
                     </div>
                 </div>
                 @endif
