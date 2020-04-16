@@ -21,7 +21,7 @@
                     </span>
                 </div>
                 <p class="text-black-300 mt-8">
-                    {{ $movie['overview'] }}
+                    {!! str_replace('.', '.<br>', $movie['overview']) !!}
                 </p>
                 <div class="mt-12">
                     <h4 class="text-black font-semibold">Featured Crew</h4>
