@@ -19,16 +19,16 @@ class ActorsController extends Controller
 
             if (@$popularPersons['results']) {
 
-    //            $gender = $request->input('gender');
-    //
-    //            $filteredPopularPersons = collect($popularPersons['results'])->filter(function($value, $key) use ($gender) {
-    //                return $value['gender'] === $gender;
-    //            })->all();
+                //            $gender = $request->input('gender');
+                //
+                //            $filteredPopularPersons = collect($popularPersons['results'])->filter(function($value, $key) use ($gender) {
+                //                return $value['gender'] === $gender;
+                //            })->all();
 
                 return view('actors.index', [
                     'title' => 'Popular Actor - ' . config ('app.name'),
                     'metaDescription' => 'Mufiap adalah aplikasi penyedia list movie terlengkap dan terupdate di dunia.',
-    //                'popularPersons' => $filteredPopularPersons,
+                    //                'popularPersons' => $filteredPopularPersons,
                     'popularPersons' => $popularPersons['results'],
                     'page' => (intval($page) > 0) ? intval($page) : 1
                 ]);
@@ -40,7 +40,6 @@ class ActorsController extends Controller
                 ]);
             }
         }catch (\Exception $e){
-//            return $e;
             return abort(404);
         }
 
@@ -54,8 +53,8 @@ class ActorsController extends Controller
                 ->json();
 
             $actorMovieCreditCast = Http::withToken(config('services.tmdb.token'))
-                ->get("https://api.themoviedb.org/3/person/${id}/movie_credits")
-                ->json()['cast'];
+                                        ->get("https://api.themoviedb.org/3/person/${id}/movie_credits")
+                                        ->json()['cast'];
 
             $actorMovieCreditCast = collect($actorMovieCreditCast)->mapWithKeys(function ($movie) {
                 return [
@@ -70,8 +69,8 @@ class ActorsController extends Controller
             })->sortByDesc('release_date')->all();
 
             $actorImagesProfiles = Http::withToken(config('services.tmdb.token'))
-                ->get("https://api.themoviedb.org/3/person/${id}/images")
-                ->json()['profiles'];
+                                       ->get("https://api.themoviedb.org/3/person/${id}/images")
+                                       ->json()['profiles'];
 
             return view('actors.show', [
                 'title' => $actor['name'] . ' — ' . config('app.name'),
@@ -81,7 +80,6 @@ class ActorsController extends Controller
                 'actorImagesProfiles' => $actorImagesProfiles
             ]);
         }catch (\Exception $e){
-//            return $e;
             return abort(404);
         }
     }

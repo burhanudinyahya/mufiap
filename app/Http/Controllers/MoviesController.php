@@ -45,7 +45,6 @@ class MoviesController extends Controller
                 'movie' => $movie
             ]);
         }catch (\Exception $e){
-//            return $e;
             abort(404);
         }
     }
@@ -66,10 +65,9 @@ class MoviesController extends Controller
     {
         try {
             return Http::withToken(config('services.tmdb.token'))
-                         ->get('https://api.themoviedb.org/3/movie/' . $section)
-                         ->json()['results'];
+                       ->get('https://api.themoviedb.org/3/movie/' . $section)
+                       ->json()['results'];
         }catch (\Exception $e){
-//            return $e;
             return abort(404);
         }
     }
@@ -85,7 +83,6 @@ class MoviesController extends Controller
                 return [$genre['id'] => $genre['name']];
             });
         }catch (\Exception $e){
-//            return $e;
             return abort(404);
         }
     }
