@@ -53,17 +53,19 @@
             <h2 class="text-4xl font-semibold">Cast</h2>
             <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
                 @foreach ($movie['credits']['cast'] as $cast)
-                <div class="mt-8">
-                    <a href="{{ route('actors.show', $cast['id']) }}">
-                        <img src="https://image.tmdb.org/t/p/w300/{{$cast['profile_path']}}" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=IMAGE+NOT+AVAILABLE';">
-                    </a>
-                    <div class="mt-2">
-                        <a href="#" class="text-lg mt-2 hover:text-black:300">{{ $cast['name'] }}</a>
-                        <div class="text-sm text-black-400">
-                            {{ $cast['character'] }}
+                    @if ($cast['profile_path'])
+                    <div class="mt-8">
+                        <a href="{{ route('actors.show', $cast['id']) }}">
+                            <img src="https://image.tmdb.org/t/p/w300/{{$cast['profile_path']}}" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=IMAGE+NOT+AVAILABLE';">
+                        </a>
+                        <div class="mt-2">
+                            <a href="#" class="text-lg mt-2 hover:text-black:300">{{ $cast['name'] }}</a>
+                            <div class="text-sm text-black-400">
+                                {{ $cast['character'] }}
+                            </div>
                         </div>
                     </div>
-                </div>
+                    @endif
                 @endforeach
             </div>
         </div>
