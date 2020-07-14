@@ -25,17 +25,19 @@
             <h2 class="text-4xl font-semibold">Movies</h2>
             <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
                 @foreach ($actorMovieCreditCast as $cast)
-                <div class="mt-8">
-                    <a href="{{ route('movies.show', $cast['id']) }}">
-                        <img src="https://image.tmdb.org/t/p/w300/{{$cast['poster_path']}}" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150"  onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=IMAGE+NOT+AVAILABLE';">
-                    </a>
-                    <div class="mt-2">
-                        <a href="#" class="text-lg mt-2 hover:text-black:300">{{ $cast['title'] }} ({{ \Carbon\Carbon::parse($cast['release_date'])->format('Y') }})</a>
-                        <div class="text-sm text-black-400">
-                            {{ $cast['character'] }}
+                    @if ($cast['poster_path'])
+                    <div class="mt-8">
+                        <a href="{{ route('movies.show', $cast['id']) }}">
+                            <img src="https://image.tmdb.org/t/p/w300/{{$cast['poster_path']}}" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150"  onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=IMAGE+NOT+AVAILABLE';">
+                        </a>
+                        <div class="mt-2">
+                            <a href="#" class="text-lg mt-2 hover:text-black:300">{{ $cast['title'] }} ({{ \Carbon\Carbon::parse($cast['release_date'])->format('Y') }})</a>
+                            <div class="text-sm text-black-400">
+                                {{ $cast['character'] }}
+                            </div>
                         </div>
                     </div>
-                </div>
+                    @endif
                 @endforeach
             </div>
         </div>
